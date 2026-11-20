@@ -36,7 +36,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
 .folio.bot{border-bottom:0;border-top:1px solid var(--rule);padding:6px 0 0;margin-top:auto}
 .mast{text-align:center;border-bottom:4px double var(--ink);padding-bottom:8px}
 .mast .t{font:700 34px/1.05 "Cinzel",var(--display);letter-spacing:.04em;text-transform:uppercase}
-.mast .s{font:600 9px var(--label);letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);margin-top:6px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:2px 10px}
+.mast .s{font:600 9px var(--label);letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);margin-top:6px;display:flex;flex-wrap:wrap;justify-content:center;gap:2px 0}
+.mast .s span+span::before{content:"·";margin:0 .7em}
 .cover h3{font:400 30px/1.08 var(--display);margin:4px 0 0;text-wrap:balance}
 .dek{font-style:italic;color:var(--ink2);margin:0}
 .inside{border-top:1px solid var(--ink);padding-top:8px;font-size:13px;line-height:1.4}
@@ -74,7 +75,7 @@ def pages(issue):
     lead = picks[0]
     first = lead["summary"].split(". ")[0].rstrip(".") + "."
     out.append(f'''<div class="page cover" data-density="hard"><div class="pg">
-<div class="mast"><div class="t">CEO Inflection</div><div class="s"><span>{E(issue.get("vol",""))}</span><span>{E(issue["label"])}</span><span>Curated by Eric Webb Fonder</span></div></div>
+<div class="mast"><div class="t">CEO Inflection</div><div class="s"><span>{E(issue.get("vol",""))}</span><span>{E(issue["label"])}</span><span>Curated by Eric Webb, Founder</span></div></div>
 <div class="kicker">Lead story · {E(lead["cat"])}</div><h3>{E(lead["title"])}</h3>{photo(lead)}
 <p class="dek">{E(first)}</p>
 <div class="inside"><b>Inside this issue</b><ol>{"".join(f"<li>{E(p['title'])}</li>" for p in picks[1:])}</ol></div>
@@ -83,7 +84,7 @@ def pages(issue):
     out.append(f'''<div class="page letter"><div class="pg">
 <div class="folio"><span>From the chair</span><span>{E(issue["label"])}</span></div>
 <h3>A note before you read</h3>{intro}
-<p><i>— Eric Webb Fonder</i><br><span class="byline">Vistage Chair · Founder, CEO Inflection</span></p>
+<p><i>— Eric Webb</i><br><span class="byline">Vistage Chair · Founder, CEO Inflection</span></p>
 <div class="folio bot"><span>ceoinflection.com</span><span>2</span></div></div></div>''')
     for i, p in enumerate(picks):
         out.append(f'''<div class="page art"><div class="pg">
@@ -107,7 +108,7 @@ def edition_html(issue, banner=""):
     return f'''<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CEO Inflection {E(issue["label"])}</title>
-<meta name="description" content="CEO Inflection, {E(issue["label"])}: five reads for CEOs and owners of growing companies, curated by Eric Webb Fonder.">
+<meta name="description" content="CEO Inflection, {E(issue["label"])}: five reads for CEOs and owners of growing companies, curated by Eric Webb.">
 {'<meta name="robots" content="noindex">' if banner else ''}
 {FONTS}<style>{BASE_CSS}
 body{{background:var(--desk);padding:14px 12px 18px}}
@@ -177,7 +178,7 @@ li .d{{font:600 12px var(--label);letter-spacing:.08em;text-transform:uppercase;
 .sub{{font:600 12px var(--label);letter-spacing:.1em;text-transform:uppercase}}
 .sub a{{color:var(--bronze)}}
 </style></head><body><div class="wrap">
-<div class="mast"><div class="t">CEO Inflection</div><div class="s"><span>Monthly</span><span>Five reads for CEOs of growing companies</span><span>Curated by Eric Webb Fonder</span></div></div>
+<div class="mast"><div class="t">CEO Inflection</div><div class="s"><span>Monthly</span><span>Five reads for CEOs of growing companies</span><span>Curated by Eric Webb, Founder</span></div></div>
 {hero}
 <h2>All issues</h2><ul>{items or '<li style="padding:12px 0;color:var(--muted)">No issues yet.</li>'}</ul>
 <p class="sub"><a href="{SUBSCRIBE}" target="_top">Get each issue by email at ceoinflection.com →</a></p>

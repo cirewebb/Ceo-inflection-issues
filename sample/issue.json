@@ -1,0 +1,56 @@
+{
+  "id": "sample",
+  "label": "December 2026",
+  "vol": "Vol. 1 \u00b7 No. 1",
+  "intro": [
+    "December is when most of us set next year's plan. This month's reads share a thread: the systems you build matter more than the speeches you give. How you pay people, how you roll out AI, and how much of the company still runs through you.",
+    "Pick one, share it with your leadership team, and ask the uncomfortable question it raises."
+  ],
+  "picks": [
+    {
+      "cat": "AI & Strategy",
+      "source": "Chief Executive",
+      "author": "Joseph Esteves",
+      "title": "The Biggest AI Risk Is Automating The Wrong Company",
+      "url": "https://chiefexecutive.net/the-biggest-ai-risk-is-automating-the-wrong-company/",
+      "image": "https://chiefexecutive.net/wp-content/uploads/2026/11/AdobeStock_1194794489.webp",
+      "summary": "Counting AI licenses and training completions tells you nothing about value. Esteves says the payoff comes from questioning why a process exists before you automate it, then aiming AI at revenue, responsiveness and capacity with clear owners."
+    },
+    {
+      "cat": "Culture & Talent",
+      "source": "Fast Company",
+      "author": "Erik Clarke",
+      "title": "Your incentives are your real culture",
+      "url": "https://www.fastcompany.com/91642724/your-incentives-are-your-real-culture",
+      "image": "https://images.fastcompany.com/image/upload/f_jpg,q_auto,c_fit/wp-cms-2/2026/11/FCEB-templates-4.png",
+      "summary": "Employees learn your values from what you pay for, promote and tolerate, not from the poster on the wall. A quick audit: do your comp plans, promotions and the exceptions you make for star performers match what you say you stand for?"
+    },
+    {
+      "cat": "Leadership",
+      "source": "Fast Company",
+      "author": "Sarah Bregel",
+      "title": "How 'key person risk' derails companies",
+      "url": "https://www.fastcompany.com/91639582/how-key-person-risk-derails-companies-and-poses-problems-for-nvidia-amid-jensen-huang-scandal",
+      "image": "https://images.fastcompany.com/image/upload/f_jpg,q_auto,c_fit,w_1024/wp-cms-2/2026/11/p-1-91639582-jensen-huang-key-man-problem.jpg",
+      "summary": "Nvidia's leadership turmoil is a big-company version of a problem most owner-led firms share: too much rides on one person. The fix is unglamorous but effective, with cross-training, a real succession plan and a team that can decide without you."
+    },
+    {
+      "cat": "Leadership",
+      "source": "Chief Executive",
+      "author": "Alec Litowitz",
+      "title": "AQ Is A Learnable Discipline. Here Are Four Places CEOs Can Start",
+      "url": "https://chiefexecutive.net/aq-is-a-learnable-discipline-here-are-four-places-ceos-can-start/",
+      "image": "https://chiefexecutive.net/wp-content/uploads/2026/10/AdobeStock_217761976.webp",
+      "summary": "The leaders who win over time are the most adaptable, not the smartest, and adaptability can be trained. Four starting points: anchor your identity in adapting instead of being right, test before committing, and set up your team to surface early warning signs and protect dissenters."
+    },
+    {
+      "cat": "Growth & Economy",
+      "source": "CPA Practice Advisor",
+      "author": "Isaac M. O'Bannon",
+      "title": "CEO Confidence Falls for Third Straight Quarter",
+      "url": "https://www.cpapracticeadvisor.com/2026/10/22/ceo-confidence-falls-for-third-straight-quarter/192215/",
+      "image": "https://www.cpapracticeadvisor.com/wp-content/uploads/2023/01/economy-graph-pixabay-mediamodifier-g3ee7ec25b_1280.png",
+      "summary": "Vistage's Q3 index shows small and midsize CEOs getting more cautious: only 19% expect the economy to improve. Yet most still expect revenue growth, and 82% now use generative AI, with rising health care costs squeezing margins."
+    }
+  ]
+}

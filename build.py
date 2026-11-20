@@ -21,10 +21,10 @@ ROOT = pathlib.Path(__file__).resolve().parent
 SUBSCRIBE = "https://ceoinflection.com"
 E = lambda s: html.escape(str(s or ""), quote=True)
 
-FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=IBM+Plex+Sans+Condensed:wght@500;600&display=swap" rel="stylesheet">'
+FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cinzel:wght@600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=IBM+Plex+Sans+Condensed:wght@500;600&display=swap" rel="stylesheet">'
 
 BASE_CSS = """
-:root{--paper:#f1f0ec;--page:#fbfaf7;--ink:#16181d;--ink2:#454a54;--rule:#c9c7c0;--accent:#1d4e89;--desk:#2a2d33;
+:root{--paper:#1f2023;--page:#f7f4ee;--ink:#17181b;--ink2:#4a4741;--rule:#d3cbbd;--accent:#8a6540;--bronze:#c19a6b;--desk:#1f2023;--card:#2a2b2f;--line:#3b3c41;--light:#efe9df;--muted:#b3ab9e;
 --display:"Abril Fatface","Bodoni 72",Didot,Georgia,serif;--body:"Source Serif 4",Georgia,"Times New Roman",serif;
 --label:"IBM Plex Sans Condensed","Arial Narrow",Arial,sans-serif;color-scheme:light}
 *{box-sizing:border-box}html,body{margin:0}
@@ -35,7 +35,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
 .folio{display:flex;justify-content:space-between;font:600 10px var(--label);letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);border-bottom:1px solid var(--ink);padding-bottom:6px}
 .folio.bot{border-bottom:0;border-top:1px solid var(--rule);padding:6px 0 0;margin-top:auto}
 .mast{text-align:center;border-bottom:4px double var(--ink);padding-bottom:8px}
-.mast .t{font:400 44px/1 var(--display)}
+.mast .t{font:700 34px/1.05 "Cinzel",var(--display);letter-spacing:.04em;text-transform:uppercase}
 .mast .s{font:600 9px var(--label);letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);margin-top:6px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:2px 10px}
 .cover h3{font:400 30px/1.08 var(--display);margin:4px 0 0;text-wrap:balance}
 .dek{font-style:italic;color:var(--ink2);margin:0}
@@ -49,11 +49,11 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
 .art p:first-of-type::first-letter{font:400 44px/0.8 var(--display);float:left;padding:4px 6px 0 0}
 .read{font:600 12px var(--label);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);text-decoration:none;border-top:1px solid var(--rule);padding-top:8px}
 .letter h3{font:400 28px/1.1 var(--display);margin:0}
-.back{background:var(--ink);color:var(--page)}
+.back{background:var(--desk);color:var(--page)}
 .back .folio{color:#b9bcc4;border-color:#b9bcc4}
-.back h3{font:400 30px/1.1 var(--display);margin:0;color:var(--page)}
+.back h3{font:400 30px/1.1 var(--display);margin:0;color:var(--bronze)}
 .back p{margin:0;font-size:15px;color:#d9dadf}
-.back .btn{display:inline-block;border:1px solid var(--page);color:var(--page);padding:9px 14px;font:600 12px var(--label);letter-spacing:.1em;text-transform:uppercase;text-decoration:none;align-self:flex-start}
+.back .btn{display:inline-block;border:1px solid var(--bronze);color:var(--bronze);padding:9px 14px;font:600 12px var(--label);letter-spacing:.1em;text-transform:uppercase;text-decoration:none;align-self:flex-start}
 .ph{position:relative;width:100%;aspect-ratio:16/9;background:#dcdad3;overflow:hidden;flex:0 0 auto}
 .ph img{width:100%;height:100%;object-fit:cover;display:block}
 .ph .fb{position:absolute;inset:0;display:none;place-items:center;background:repeating-linear-gradient(135deg,#d6d4cc 0 2px,#e2e0d9 2px 9px)}
@@ -112,10 +112,10 @@ def edition_html(issue, banner=""):
 {FONTS}<style>{BASE_CSS}
 body{{background:var(--desk);padding:14px 12px 18px}}
 .bar{{max-width:980px;margin:0 auto 12px;display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;color:#d9dadf;font:600 12px var(--label);letter-spacing:.1em;text-transform:uppercase}}
-.bar a{{color:#f1f0ec;text-decoration:none;border:1px solid #9a9da5;border-radius:999px;padding:7px 12px}}
+.bar a{{color:var(--bronze);text-decoration:none;border:1px solid var(--bronze);border-radius:999px;padding:7px 12px}}
 #book{{margin:0 auto}}
 .nav{{display:flex;gap:12px;justify-content:center;align-items:center;margin-top:12px;color:#d9dadf;font:600 12px var(--label);letter-spacing:.1em;text-transform:uppercase}}
-.nav button{{background:transparent;border:1px solid #9a9da5;color:#f1f0ec;border-radius:999px;padding:8px 14px;font:inherit;cursor:pointer}}
+.nav button{{background:transparent;border:1px solid var(--bronze);color:var(--bronze);border-radius:999px;padding:8px 14px;font:inherit;cursor:pointer}}
 .nofx #book{{display:grid;gap:16px;max-width:460px}}.nofx #book .page{{height:620px}}.nofx .nav{{display:none}}
 .banner{{max-width:980px;margin:0 auto 10px;background:#fff3c4;color:#5a4a00;font:600 12px var(--label);letter-spacing:.06em;padding:8px 12px;border-radius:6px}}
 </style></head><body>
@@ -161,24 +161,25 @@ def archive_html(issues):
     return f'''<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CEO Inflection Issues</title><meta name="description" content="Every issue of CEO Inflection, the monthly reading list for CEOs and owners of growing companies.">{FONTS}
 <style>{BASE_CSS}
-body{{background:var(--paper)}}
+body{{background:var(--desk);color:var(--light)}}
+.mast{{border-bottom-color:var(--bronze)}}.mast .t{{color:var(--bronze)}}.mast .s{{color:var(--muted)}}
 .wrap{{max-width:760px;margin:0 auto;padding:28px 16px 48px;display:grid;gap:22px}}
 .mast{{border-bottom:4px double var(--ink)}}
-.hero{{display:grid;gap:8px;background:var(--page);border:1px solid var(--rule);padding:22px;text-decoration:none;color:var(--ink)}}
-.hero .k{{font:600 11px var(--label);letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}}
+.hero{{display:grid;gap:8px;background:var(--card);border:1px solid var(--line);padding:22px;text-decoration:none;color:var(--light)}}
+.hero .k{{font:600 11px var(--label);letter-spacing:.16em;text-transform:uppercase;color:var(--bronze)}}
 .hero .h{{font:400 30px/1.1 var(--display);text-wrap:balance}}
-.hero .go{{font:600 12px var(--label);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}}
-h2{{font:600 12px var(--label);letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);margin:0;border-bottom:1px solid var(--ink);padding-bottom:6px}}
+.hero .go{{font:600 12px var(--label);letter-spacing:.1em;text-transform:uppercase;color:var(--bronze)}}
+h2{{font:600 12px var(--label);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:0;border-bottom:1px solid var(--bronze);padding-bottom:6px}}
 ul{{list-style:none;margin:0;padding:0}}
-li a{{display:grid;grid-template-columns:140px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--rule);text-decoration:none;color:var(--ink)}}
-li .d{{font:600 12px var(--label);letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)}}
+li a{{display:grid;grid-template-columns:140px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);text-decoration:none;color:var(--light)}}
+li .d{{font:600 12px var(--label);letter-spacing:.08em;text-transform:uppercase;color:var(--bronze)}}
 @media (max-width:420px){{li a{{grid-template-columns:1fr;gap:2px}}}}
 .sub{{font:600 12px var(--label);letter-spacing:.1em;text-transform:uppercase}}
-.sub a{{color:var(--accent)}}
+.sub a{{color:var(--bronze)}}
 </style></head><body><div class="wrap">
 <div class="mast"><div class="t">CEO Inflection</div><div class="s"><span>Monthly</span><span>Five reads for CEOs of growing companies</span><span>Curated by Eric Webb Fonder</span></div></div>
 {hero}
-<h2>All issues</h2><ul>{items or '<li style="padding:12px 0;color:var(--ink2)">No issues yet.</li>'}</ul>
+<h2>All issues</h2><ul>{items or '<li style="padding:12px 0;color:var(--muted)">No issues yet.</li>'}</ul>
 <p class="sub"><a href="{SUBSCRIBE}" target="_top">Get each issue by email at ceoinflection.com →</a></p>
 </div></body></html>'''
 

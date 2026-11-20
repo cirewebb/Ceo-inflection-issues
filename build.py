@@ -37,7 +37,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
 .mast{text-align:center;border-bottom:4px double var(--ink);padding-bottom:8px}
 .mast .t{font:700 34px/1.05 "Cinzel",var(--display);letter-spacing:.04em;text-transform:uppercase}
 .mast .s{font:600 9px var(--label);letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);margin-top:6px;display:flex;flex-wrap:wrap;justify-content:center;gap:2px 0}
-.mast .s span+span::before{content:"·";margin:0 .7em}
+.mast .s span:nth-child(2)::before{content:"·";margin:0 .7em}.mast .s span:nth-child(3){flex-basis:100%;text-align:center}
 .cover h3{font:400 30px/1.08 var(--display);margin:4px 0 0;text-wrap:balance}
 .dek{font-style:italic;color:var(--ink2);margin:0}
 .inside{border-top:1px solid var(--ink);padding-top:8px;font-size:13px;line-height:1.4}
@@ -163,7 +163,7 @@ def archive_html(issues):
 <title>CEO Inflection Issues</title><meta name="description" content="Every issue of CEO Inflection, the monthly reading list for CEOs and owners of growing companies.">{FONTS}
 <style>{BASE_CSS}
 body{{background:var(--desk);color:var(--light)}}
-.mast{{border-bottom-color:var(--bronze)}}.mast .t{{color:var(--bronze)}}.mast .s{{color:var(--muted)}}
+.mast{{border-bottom:4px double var(--bronze)}}.mast .t{{color:var(--bronze)}}.mast .s{{color:var(--muted)}}
 .wrap{{max-width:760px;margin:0 auto;padding:28px 16px 48px;display:grid;gap:22px}}
 .mast{{border-bottom:4px double var(--ink)}}
 .hero{{display:grid;gap:8px;background:var(--card);border:1px solid var(--line);padding:22px;text-decoration:none;color:var(--light)}}

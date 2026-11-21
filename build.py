@@ -30,7 +30,7 @@ BASE_CSS = """
 *{box-sizing:border-box}html,body{margin:0}
 body{font:16px/1.55 var(--body);color:var(--ink);-webkit-font-smoothing:antialiased}
 a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.page{background:var(--page);color:var(--ink);overflow:hidden}
+.page{background:var(--page);color:var(--ink);overflow:hidden;container-type:size}
 .pg{height:100%;padding:22px 24px 18px;display:flex;flex-direction:column;gap:10px}
 .folio{display:flex;justify-content:space-between;font:600 10px var(--label);letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);border-bottom:1px solid var(--ink);padding-bottom:6px}
 .folio.bot{border-bottom:0;border-top:1px solid var(--rule);padding:6px 0 0;margin-top:auto}
@@ -44,11 +44,13 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
 .inside b{font:600 10px var(--label);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:4px}
 .inside ol{margin:0;padding-left:18px}
 .kicker{font:600 10px var(--label);letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
-.art h3{font:400 26px/1.1 var(--display);margin:0;text-wrap:balance}
+.art h3{font:400 clamp(18px,6.2cqw,26px)/1.1 var(--display);margin:0;text-wrap:balance}.art h3 a,.cover h3 a{color:inherit;text-decoration:none}
+.art .ph{max-height:26cqh}
+.art .sum{flex:1 1 auto;min-height:0;overflow:hidden}
 .byline{font:500 11px var(--label);letter-spacing:.06em;text-transform:uppercase;color:var(--ink2)}
-.art p,.letter p{margin:0;font-size:15px;line-height:1.5}
+.art p,.letter p{margin:0;font-size:clamp(12px,3.4cqw,15px);line-height:1.5}
 .art p:first-of-type::first-letter{font:400 44px/0.8 var(--display);float:left;padding:4px 6px 0 0}
-.read{font:600 12px var(--label);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);text-decoration:none;border-top:1px solid var(--rule);padding-top:8px}
+.read{flex:0 0 auto;display:block;font:600 12px var(--label);letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--accent);text-decoration:none;padding:9px 12px;text-align:center;border-radius:3px}
 .letter h3{font:400 28px/1.1 var(--display);margin:0}
 .back{background:var(--desk);color:var(--page)}
 .back .folio{color:#b9bcc4;border-color:#b9bcc4}
@@ -63,9 +65,11 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
 """
 
 
-def photo(p):
+def photo(p, link=None):
     if not p.get("image"):
         return ""
+    if link:
+        return f'<a href="{E(link)}" target="_blank" rel="noopener" style="display:block">' + photo(p) + "</a>"
     return (f'<div class="ph"><img src="{E(p["image"])}" alt="{E(p["title"])}" loading="lazy" '
             f'onerror="this.parentNode.classList.add(\'noimg\')"><div class="fb"><span>{E(p["source"])}</span></div></div>')
 
@@ -76,7 +80,7 @@ def pages(issue):
     first = lead["summary"].split(". ")[0].rstrip(".") + "."
     out.append(f'''<div class="page cover" data-density="hard"><div class="pg">
 <div class="mast"><div class="t">CEO Inflection</div><div class="s"><span>{E(issue.get("vol",""))}</span><span>{E(issue["label"])}</span><span>Curated by Eric Webb, Founder</span></div></div>
-<div class="kicker">Lead story · {E(lead["cat"])}</div><h3>{E(lead["title"])}</h3>{photo(lead)}
+<div class="kicker">Lead story · {E(lead["cat"])}</div><h3><a href="{E(lead["url"])}" target="_blank" rel="noopener">{E(lead["title"])}</a></h3>{photo(lead, lead["url"])}
 <p class="dek">{E(first)}</p>
 <div class="inside"><b>Inside this issue</b><ol>{"".join(f"<li>{E(p['title'])}</li>" for p in picks[1:])}</ol></div>
 </div></div>''')
@@ -89,8 +93,8 @@ def pages(issue):
     for i, p in enumerate(picks):
         out.append(f'''<div class="page art"><div class="pg">
 <div class="folio"><span>{E(p["cat"])}</span><span>{E(p["source"])}</span></div>
-<h3>{E(p["title"])}</h3><div class="byline">By {E(p["author"])} · {E(p["source"])}</div>{photo(p)}
-<p>{E(p["summary"])}</p>
+<h3><a href="{E(p["url"])}" target="_blank" rel="noopener">{E(p["title"])}</a></h3><div class="byline">By {E(p["author"])} · {E(p["source"])}</div>{photo(p, p["url"])}
+<p class="sum">{E(p["summary"])}</p>
 <a class="read" href="{E(p["url"])}" target="_blank" rel="noopener">Read the full article at {E(p["source"])} →</a>
 <div class="folio bot"><span>ceoinflection.com</span><span>{i+3}</span></div></div></div>''')
     out.append(f'''<div class="page back" data-density="hard"><div class="pg">

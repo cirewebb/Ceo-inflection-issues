@@ -45,8 +45,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
 .inside ol{margin:0;padding-left:18px}
 .kicker{font:600 10px var(--label);letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
 .art h3{font:400 clamp(18px,6.2cqw,26px)/1.1 var(--display);margin:0;text-wrap:balance}.art h3 a,.cover h3 a{color:inherit;text-decoration:none}
-.art .ph{max-height:26cqh}
-.art .sum{flex:1 1 auto;min-height:0;overflow:hidden}
+.art .ph{flex:0 1 auto;min-height:0;max-height:34cqh;aspect-ratio:auto;height:34cqh}
+.art .sum{flex:0 0 auto}
+.art .read{margin-top:auto}
+.cover .mast .t{font-size:clamp(22px,8cqw,34px)}.cover h3{font-size:clamp(19px,6.8cqw,30px)}.cover .ph{flex:0 1 auto;min-height:0;height:30cqh;aspect-ratio:auto}.cover .dek{font-size:clamp(12px,3.5cqw,16px)}.cover .inside{font-size:clamp(11px,3.1cqw,13px)}
 .byline{font:500 11px var(--label);letter-spacing:.06em;text-transform:uppercase;color:var(--ink2)}
 .art p,.letter p{margin:0;font-size:clamp(12px,3.4cqw,15px);line-height:1.5}
 .art p:first-of-type::first-letter{font:400 44px/0.8 var(--display);float:left;padding:4px 6px 0 0}
@@ -68,8 +70,11 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
 def photo(p, link=None):
     if not p.get("image"):
         return ""
+    img = (f'<img src="{E(p["image"])}" alt="{E(p["title"])}" loading="lazy" '
+           f'onerror="this.closest(\'.ph\').classList.add(\'noimg\')">')
     if link:
-        return f'<a href="{E(link)}" target="_blank" rel="noopener" style="display:block">' + photo(p) + "</a>"
+        img = f'<a href="{E(link)}" target="_blank" rel="noopener" style="display:block;width:100%;height:100%">{img}</a>'
+    return f'<div class="ph">{img}<div class="fb"><span>{E(p["source"])}</span></div></div>'
     return (f'<div class="ph"><img src="{E(p["image"])}" alt="{E(p["title"])}" loading="lazy" '
             f'onerror="this.parentNode.classList.add(\'noimg\')"><div class="fb"><span>{E(p["source"])}</span></div></div>')
 
